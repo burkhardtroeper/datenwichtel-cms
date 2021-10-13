@@ -1,0 +1,19 @@
+{
+  "name": "ms-cms",
+  "version": "1.0.0",
+  "description": "Nodejs based blog-cms, used to power datenwichtel.de",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "Burkhardt Röper",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.4",
+    "mongoose": "^6.0.10"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}

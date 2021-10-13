@@ -5,7 +5,12 @@ const mongoose = require('mongoose');
 const path = require('path');
 const hbs = require('express-handlebars');
 
-const {mongoDbUrl, PORT} = require('./config/configuration');
+const {mongoDbUrl, PORT, globalVariables} = require('./config/configuration');
+
+const flash = require('connect-flash');
+
+const session = require('express-session');
+
 
 const app = express();
 
@@ -30,8 +35,21 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+/* Flash and session */
+app.use(session({
+    secret: 'anysecret',
+    saveUninitialized: true,
+    resave: true,
+}));
+
+app.use(flash());
+
+app.use(globalVariables);
+
+
 /* Setup view engine */
-app.engine('handlebars', hbs({defaultLayout: 'default'}));
+// app.engine('handlebars', hbs({defaultLayout: 'default'}));
+app.engine("handlebars", hbs({defaultLayout: 'default', runtimeOptions: {allowProtoPropertiesByDefault: true, allowProtoMethodsByDefault: true},}));
 app.set('view engine', 'handlebars');
 
 

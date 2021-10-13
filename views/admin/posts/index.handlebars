@@ -6,19 +6,23 @@
     <table class="table table-bordered">
         <thead class="bg-dark text-center">
             <tr class="text-white">
-                <th>ID</th>
                 <th>Title</th>
                 <th>Description</th>
+                <th>Status</th>
                 <th>Allow comments</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody class="text-center">
             {{#each posts}}
                 <tr>
-                    <td>{{_id}}</td>
                     <td>{{title}}</td>
                     <td>{{description}}</td>
                     <td>{{status}}</td>
+                    <td>{{allowComments}}</td>
+                    <td>
+                        <a href="/admin/posts/edit/{{_id}}" class="btn btn-sm btn-warning">Edit</a>
+                    </td>
                 </tr>
             {{/each}}
         </tbody>

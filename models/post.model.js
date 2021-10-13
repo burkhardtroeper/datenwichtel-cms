@@ -16,6 +16,24 @@ const postSchema = mongoose.Schema({
     creationDate: {
         type: Date,
         default: Date.now()
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category'
+    },
+    comments: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Comment'
+        }
+    ],
+    allowComments: {
+        type: Boolean,
+        default: false
     }
 });
 
